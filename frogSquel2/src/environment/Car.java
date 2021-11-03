@@ -2,7 +2,7 @@ package environment;
 
 import java.awt.Color;
 
-import gameCommons.Case;
+import util.Case;
 import gameCommons.Game;
 import graphicalElements.Element;
 
@@ -15,6 +15,11 @@ public class Car {
 	private final Color colorRtL = Color.BLUE;
 
 	//TODO Constructeur(s)
+	public Car (Game g, Case c, boolean b){
+		this.game=g;
+		this.leftPosition=c;
+		this.leftToRight=b;
+	}
 	
 	//TODO : ajout de methodes
 

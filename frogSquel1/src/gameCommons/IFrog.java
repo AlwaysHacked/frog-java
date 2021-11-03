@@ -1,7 +1,7 @@
 package gameCommons;
 
-import util.*;
-//import util.Direction;
+import util.Case;
+import util.Direction;
 
 public interface IFrog {
 	
@@ -16,11 +16,11 @@ public interface IFrog {
 	 * @return
 	 */
 	public Direction getDirection();
-	
+
 	/**
 	 * D�place la grenouille dans la direction donn�e et teste la fin de partie
 	 * @param key
 	 */
-	public void move(Direction d);
+	public void move(Direction key);
 
 }

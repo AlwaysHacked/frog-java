@@ -1,9 +1,9 @@
 package frog;
 
-import java.util.*;
-import util.*;
-import gameCommons.*;
-//import gameCommons.IFrog;
+import gameCommons.Game;
+import gameCommons.IFrog;
+import util.Case;
+import util.Direction;
 
 public class Frog implements IFrog {
 
