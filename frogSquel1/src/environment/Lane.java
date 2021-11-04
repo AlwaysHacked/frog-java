@@ -4,6 +4,7 @@ import environment.Environment;
 import gameCommons.Game;
 import gameCommons.IEnvironment;
 import util.Case;
+import java.util.Random;
 
 import java.util.ArrayList;
 
@@ -11,11 +12,21 @@ public class Lane {
 	private Game game;
 	private int ord;
 	private int speed;
-	private ArrayList<Car> cars = new ArrayList<>();
+	private ArrayList<Car> cars; // = new ArrayList<>();
 	private boolean leftToRight;
 	private double density;
 
+	private Random rand = new Random();
 	// TODO : Constructeur(s)
+	public Lane(Game g, int ordonnee){
+		this.ord = ordonnee;
+
+		this.game = g;
+		this.speed = g.minSpeedInTimerLoops;
+		this.cars = new ArrayList<>();
+		this.leftToRight = rand.nextBoolean();
+		this.density = g.defaultDensity;
+	}
 
 	public void update() {
 
@@ -32,6 +43,10 @@ public class Lane {
 
 	}
 
+	public void setCars(){
+//		cars = new ArrayList<Car>();
+		for(int i; )
+	}
 	// TODO : ajout de methodes
 
 	/*
