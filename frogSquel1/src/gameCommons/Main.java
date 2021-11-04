@@ -11,7 +11,7 @@ import graphicalElements.FroggerGraphic;
 import graphicalElements.IFroggerGraphics;
 
 public class Main {
-
+	// test
 	public static void main(String[] args) {
 
 		//Caract�ristiques du jeu

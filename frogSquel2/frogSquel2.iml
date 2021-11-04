@@ -7,9 +7,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="données brutes" level="project" />
     <orderEntry type="library" name="frog_java" level="project" />
     <orderEntry type="module" module-name="frogSquel1" />
-    <orderEntry type="module" module-name="squelette1FRog" />
   </component>
 </module>
