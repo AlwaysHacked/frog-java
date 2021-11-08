@@ -24,17 +24,35 @@ public class Car {
 		this.leftToRight = b;
 		this.length = rand.nextInt(3) + 1;
 	}
-	
+
 	//TODO : ajout de methodes
 	public void move(){
-		if(this.leftToRight)
-			this.leftPosition = new Case(leftPosition.absc + 1, leftPosition.ord);
-		else
-			this.leftPosition = new Case(leftPosition.absc - 1, leftPosition.ord);
+		int tmp = this.leftToRight ? leftPosition.absc + 1 : leftPosition.absc - 1;
+		this.leftPosition = new Case(tmp, leftPosition.ord);
+		this.addToGraphics();
+
+//		if(this.leftToRight)
+//			this.leftPosition = new Case(leftPosition.absc + 1, leftPosition.ord);
+//		else
+//			this.leftPosition = new Case(leftPosition.absc - 1, leftPosition.ord);
 	}
 
+	public boolean needsDelete(){
+		if (leftToRight && leftPosition.absc - length > game.width)
+			return true;
+		if(!leftToRight && leftPosition.absc + length < game.width)
+			return true;
+		return false;
+	}
 
-	
+	public boolean coversCase(Case pos) {
+		if (pos.ord != this.leftPosition.ord) {
+			return false;
+		} else {
+			return pos.absc >= this.leftPosition.absc && pos.absc < this.leftPosition.absc + this.length;
+		}
+	}
+
 	/* Fourni : addToGraphics() permettant d'ajouter un element graphique correspondant a la voiture*/
 	private void addToGraphics() {
 		for (int i = 0; i < length; i++) {

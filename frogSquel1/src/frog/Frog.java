@@ -21,7 +21,7 @@ public class Frog implements IFrog {
 
 
 	public void move(Direction d){
-		if(d == Direction.up && c.ord + 1 <= game.height){
+		if(d == Direction.up && c.ord + 1 < game.height){
 			c = new Case(c.absc, c.ord + 1);
 		}
 		else if(d == Direction.down && c.ord - 1 >= 0){
@@ -30,7 +30,7 @@ public class Frog implements IFrog {
 		else if(d == Direction.left && c.absc - 1 >= 0){
 			c = new Case(c.absc - 1, c.ord);
 		}
-		else if(d == Direction.right && c.absc <= game.width){
+		else if(d == Direction.right && c.absc < game.width - 1){
 			c = new Case(c.absc + 1, c.ord);
 		}
 	}

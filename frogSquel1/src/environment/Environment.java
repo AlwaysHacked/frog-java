@@ -27,6 +27,7 @@ public class Environment implements IEnvironment {
 
     @Override
     public void update() {
-
+        for(Lane l : voies)
+            l.update();
     }
 }
