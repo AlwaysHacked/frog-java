@@ -10,9 +10,9 @@ public class Environment implements IEnvironment {
     private ArrayList<Lane> voies;
 
     public Environment(Game g){
-
-        voies = new ArrayList<>(g.height);
-
+        voies = new ArrayList<>();
+        for(int i = 1; i < g.height - 1; i++)
+            voies.add(new Lane(g, i));
     }
 
     @Override
