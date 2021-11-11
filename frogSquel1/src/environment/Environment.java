@@ -29,5 +29,6 @@ public class Environment implements IEnvironment {
     public void update() {
         for(Lane l : voies)
             l.update();
+
     }
 }

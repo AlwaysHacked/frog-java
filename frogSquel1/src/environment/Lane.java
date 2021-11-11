@@ -23,7 +23,7 @@ public class Lane {
 		this.ord = ordonnee;
 
 		this.game = g;
-		this.speed = g.minSpeedInTimerLoops;
+		this.speed = rand.nextInt(3) + g.minSpeedInTimerLoops;
 		this.leftToRight = rand.nextBoolean();
 		this.density = g.defaultDensity;
 	}
@@ -39,9 +39,10 @@ public class Lane {
 			moveTime = 0;
 			this.moveAllCars(true);
 		}
-		else this.moveAllCars(false);
-		removeCar();
+		this.moveAllCars(false);
+//		removeCar();
 		mayAddCar();
+		System.out.println(cars.size());
 		// Toutes les voitures se d�placent d'une case au bout d'un nombre "tic
 		// d'horloge" �gal � leur vitesse
 		// Notez que cette m�thode est appel�e � chaque tic d'horloge
