@@ -19,13 +19,17 @@ public class Lane {
 
 	private Random rand = new Random();
 
-	public Lane(Game g, int ordonnee){
+	public Lane(Game g, double density, int ordonnee){
 		this.ord = ordonnee;
 
 		this.game = g;
-		this.speed = rand.nextInt(3) + g.minSpeedInTimerLoops;
+		this.speed = rand.nextInt(2) + 1;
 		this.leftToRight = rand.nextBoolean();
-		this.density = g.defaultDensity;
+		this.density = density;
+	}
+
+	public ArrayList<Car> getCars(){
+		return this.cars;
 	}
 
 	private void moveAllCars(boolean b){
@@ -39,19 +43,9 @@ public class Lane {
 			moveTime = 0;
 			this.moveAllCars(true);
 		}
-		this.moveAllCars(false);
-//		removeCar();
+		else this.moveAllCars(false);
+		removeCar();
 		mayAddCar();
-		System.out.println(cars.size());
-		// Toutes les voitures se d�placent d'une case au bout d'un nombre "tic
-		// d'horloge" �gal � leur vitesse
-		// Notez que cette m�thode est appel�e � chaque tic d'horloge
-
-		// Les voitures doivent etre ajoutes a l interface graphique meme quand
-		// elle ne bougent pas
-
-		// A chaque tic d'horloge, une voiture peut �tre ajout�e
-
 	}
 
 	private void removeCar(){ // void ou bool a voir
@@ -60,14 +54,16 @@ public class Lane {
 		}
 	}
 
+
 	public boolean isSafe(Case c){
 		if(cars.isEmpty())
 			return true;
 		for(Car car : cars)
-			if(car.getPosition().ord != c.ord)
+			if(! car.isOnPosition(c))
 				return true;
 		return false;
 	}
+
 
 //	 * Fourni : mayAddCar(), getFirstCase() et getBeforeFirstCase()
 

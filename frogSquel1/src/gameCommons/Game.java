@@ -2,6 +2,7 @@ package gameCommons;
 
 import java.awt.*;
 import java.util.*;
+import environment.*;
 
 import graphicalElements.*;
 //import graphicalElements.IFroggerGraphics;
@@ -76,9 +77,18 @@ public class Game {
 	 * @return true si le partie est perdue
 	 */
 	public boolean testLose() {
-		if (environment.isSafe(frog.getPosition() ))
-			return true;
+		ArrayList<Car> carsInLane =  environment.getVoie(frog.getPosition().ord).getCars();
+		for (Car c : carsInLane) {
+			if(c.isOnPosition(frog.getPosition())){
+				graphic.endGameScreen("fucked");
+				return true;
+			}
+		}
 		return false;
+//
+//		if (environment.isSafe(frog.getPosition() ))
+//			return true;
+//		return false;
 	}
 
 	/**
@@ -88,8 +98,10 @@ public class Game {
 	 * @return true si la partie est gagn�e
 	 */
 	public boolean testWin() {
-		if(frog.getPosition().ord == height)
+		if(frog.getPosition().ord == height - 1) {
+			graphic.endGameScreen("not fucked, BRAVO!");
 			return true;
+		}
 		return false;
 	}
 
@@ -100,7 +112,7 @@ public class Game {
 	public void update() {
 		graphic.clear();
 		environment.update();
-		this.graphic.add(new Element(frog.getPosition(), Color.GREEN));
+		this.graphic.add(new Element(frog.getPosition(), Color.BLACK));
 		testLose();
 		testWin();
 	}

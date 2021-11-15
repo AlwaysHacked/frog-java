@@ -33,14 +33,30 @@ public class Car {
 		}
 		this.addToGraphics();
 	}
+
+	//if ( a > b)
+//		return a;
+//	else return b;
+//	a>b ? a : b;
+
 	public Case getPosition(){
 		return this.leftPosition;
 	}
 
-	public boolean  needsDelete(){
-		if (leftToRight && leftPosition.ord - length > game.width)
+	public boolean isOnPosition(Case c){
+		int tail = leftToRight ? leftPosition.absc - length : leftPosition.absc + length;
+		if(leftToRight && c.absc >= tail && c.absc <= leftPosition.absc)
 			return true;
-		if(!leftToRight && leftPosition.ord + length < 0)
+		if(!leftToRight && c.absc <= tail && c.absc >= leftPosition.absc)
+			return true;
+		return false;
+	}
+
+
+	public boolean  needsDelete(){
+		if (leftToRight && leftPosition.absc - length > game.width)
+			return true;
+		if(!leftToRight && leftPosition.absc + length < 0)
 			return true;
 		return false;
 	}
