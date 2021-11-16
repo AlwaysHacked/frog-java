@@ -29,7 +29,7 @@ public class Main {
 		int height = 20;
 		int tempo = 100;
 		int minSpeedInTimerLoops = 1;
-		double defaultDensity = 0.2;
+		double defaultDensity = 0.1;
 		
 		//Cr�ation de l'interface graphique
 		IFroggerGraphics graphic = new FroggerGraphic(width, height);

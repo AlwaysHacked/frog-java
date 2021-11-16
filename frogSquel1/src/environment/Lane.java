@@ -55,13 +55,11 @@ public class Lane {
 	}
 
 
-	public boolean isSafe(Case c){
-		if(cars.isEmpty())
-			return true;
+	public boolean isSafe(Case c){;
 		for(Car car : cars)
-			if(! car.isOnPosition(c))
-				return true;
-		return false;
+			if(car.isOnPosition(c))
+				return false;
+		return true;
 	}
 
 

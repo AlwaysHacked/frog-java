@@ -52,7 +52,6 @@ public class Car {
 		return false;
 	}
 
-
 	public boolean  needsDelete(){
 		if (leftToRight && leftPosition.absc - length > game.width)
 			return true;
