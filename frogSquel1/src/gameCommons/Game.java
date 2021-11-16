@@ -113,8 +113,9 @@ public class Game {
 		graphic.clear();
 		environment.update();
 		this.graphic.add(new Element(frog.getPosition(), Color.BLACK));
-		testLose();
-		testWin();
+		if (testLose() || testWin()){
+			//			System.exit(0);
+		}
 	}
 
 }

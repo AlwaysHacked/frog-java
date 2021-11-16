@@ -23,8 +23,8 @@ public class Environment implements IEnvironment {
     }
 
     @Override
-    public boolean isSafe(Case aCase) {
-        return true;
+    public boolean isSafe(Case c){
+        return voies.get(c.ord).isSafe(c);
     }
 
     @Override
