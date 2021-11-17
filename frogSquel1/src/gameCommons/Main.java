@@ -1,11 +1,3 @@
-/*
- A demander :
- * L'apparition des voitures
- * Des voitures collees?
- * `getVoie` dans IEnvironment
-
- */
-
 package gameCommons;
 
 import java.awt.event.ActionEvent;
