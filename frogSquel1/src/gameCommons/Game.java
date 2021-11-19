@@ -77,18 +77,11 @@ public class Game {
 	 * @return true si le partie est perdue
 	 */
 	public boolean testLose() {
-		ArrayList<Car> carsInLane =  environment.getVoie(frog.getPosition().ord).getCars();
-		for (Car c : carsInLane) {
-			if(c.isOnPosition(frog.getPosition())){
-				graphic.endGameScreen("fucked");
-				return true;
-			}
+		if(!environment.isSafe(frog.getPosition())){
+			graphic.endGameScreen("fucked");
+			return true;
 		}
 		return false;
-//
-//		if (environment.isSafe(frog.getPosition() ))
-//			return true;
-//		return false;
 	}
 
 	/**

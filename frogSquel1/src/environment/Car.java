@@ -44,7 +44,7 @@ public class Car {
 	}
 
 	public boolean isOnPosition(Case c){
-		int tail = leftToRight ? leftPosition.absc - length : leftPosition.absc + length;
+		int tail = leftToRight ? leftPosition.absc - (length  - 1): leftPosition.absc + (length - 1);
 		if(leftToRight && c.absc >= tail && c.absc <= leftPosition.absc)
 			return true;
 		if(!leftToRight && c.absc <= tail && c.absc >= leftPosition.absc)

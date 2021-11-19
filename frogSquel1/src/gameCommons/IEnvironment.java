@@ -28,6 +28,6 @@ public interface IEnvironment {
 	 */
 	public void update();
 
-	public Lane getVoie(int ord);
+//	public Lane getVoie(int ord);
 
 	}

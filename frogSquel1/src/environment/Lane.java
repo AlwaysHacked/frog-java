@@ -23,7 +23,7 @@ public class Lane {
 		this.ord = ordonnee;
 
 		this.game = g;
-		this.speed = rand.nextInt(2) + 1;
+		this.speed = rand.nextInt(3) + 2;
 		this.leftToRight = rand.nextBoolean();
 		this.density = density;
 	}

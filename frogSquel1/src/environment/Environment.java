@@ -9,9 +9,9 @@ import gameCommons.IEnvironment;
 public class Environment implements IEnvironment {
     private  ArrayList<Lane> voies;
 
-    public Lane getVoie(int ord){
-        return this.voies.get(ord);
-    }
+//    public Lane getVoie(int ord){
+//        return this.voies.get(ord);
+//    }
 
     public Environment(Game g){
         voies = new ArrayList<>();
