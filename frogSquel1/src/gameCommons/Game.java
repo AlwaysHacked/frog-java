@@ -91,7 +91,7 @@ public class Game {
 	 * @return true si la partie est gagn�e
 	 */
 	public boolean testWin() {
-		if(frog.getPosition().ord == height - 1) {
+		if(environment.isWinningPosition(frog.getPosition())){
 			graphic.endGameScreen("not fucked, BRAVO!");
 			return true;
 		}

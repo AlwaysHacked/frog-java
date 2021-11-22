@@ -7,7 +7,8 @@ import gameCommons.Game;
 import gameCommons.IEnvironment;
 
 public class Environment implements IEnvironment {
-    private  ArrayList<Lane> voies;
+    protected ArrayList<Lane> voies;
+    protected Game game;
 
 //    public Lane getVoie(int ord){
 //        return this.voies.get(ord);
@@ -20,6 +21,8 @@ public class Environment implements IEnvironment {
         for(int i = 1; i < g.height - 1; i++)
             voies.add(new Lane(g, g.defaultDensity, i));
         voies.add(new Lane(g, 0, g.height));
+
+        this.game = g;
     }
 
     @Override
@@ -29,7 +32,7 @@ public class Environment implements IEnvironment {
 
     @Override
     public boolean isWinningPosition(Case aCase) {
-        return false;
+        return this.game.height - 1 == aCase.ord ;
     }
 
     @Override

@@ -3,6 +3,7 @@ package graphicalElements;
 import javax.swing.*;
 
 import gameCommons.IFrog;
+import gameCommons.Main;
 import util.Direction;
 
 import java.awt.*;
@@ -62,6 +63,10 @@ public class FroggerGraphic extends JPanel implements IFroggerGraphics, KeyListe
 			break;
 		case KeyEvent.VK_RIGHT:
 			frog.move(Direction.right);
+			break;
+//		case KeyEvent.VK_ENTER:
+//			Main.main(new String[]{"hello"} );
+//			break;
 		}
 	}
 

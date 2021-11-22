@@ -44,10 +44,12 @@ public class Car {
 	}
 
 	public boolean isOnPosition(Case c){
-		int tail = leftToRight ? leftPosition.absc - (length  - 1): leftPosition.absc + (length - 1);
-		if(leftToRight && c.absc >= tail && c.absc <= leftPosition.absc)
+		int tail = leftToRight ? leftPosition.absc : leftPosition.absc + (length - 1);
+		int head = leftToRight ? leftPosition.absc + (length - 1) : leftPosition.absc;
+
+		if(leftToRight && c.absc >= tail && c.absc <= head )
 			return true;
-		if(!leftToRight && c.absc <= tail && c.absc >= leftPosition.absc)
+		if(!leftToRight && c.absc <= tail && c.absc >= head)
 			return true;
 		return false;
 	}
