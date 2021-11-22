@@ -62,6 +62,13 @@ public class Car {
 		return false;
 	}
 
+	public void moveOneCarToUp(){
+		leftPosition = new Case(leftPosition.absc, leftPosition.ord+1);
+	}
+
+	public void moveOneCarToDown(){
+		leftPosition = new Case(leftPosition.absc, leftPosition.ord-1);
+	}
 
 	/* Fourni : addToGraphics() permettant d'ajouter un element graphique correspondant a la voiture*/
 	private void addToGraphics() {

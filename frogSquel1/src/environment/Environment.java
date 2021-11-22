@@ -25,6 +25,9 @@ public class Environment implements IEnvironment {
         this.game = g;
     }
 
+    public Environment() {
+    }
+
     @Override
     public boolean isSafe(Case c){
         return voies.get(c.ord).isSafe(c);

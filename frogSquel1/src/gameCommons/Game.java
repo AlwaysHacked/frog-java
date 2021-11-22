@@ -12,6 +12,7 @@ public class Game {
 	public final Random randomGen = new Random();
 
 	// Caracteristique de la partie
+	public final int frogMaxHeight;
 	public final int width;
 	public final int height;
 	public final int minSpeedInTimerLoops;
@@ -35,11 +36,12 @@ public class Game {
 	 * @param defaultDensity
 	 *            densite de voiture utilisee par defaut pour les routes
 	 */
-	public Game(IFroggerGraphics graphic, int width, int height, int minSpeedInTimerLoop, double defaultDensity) {
+	public Game(IFroggerGraphics graphic, int width, int frogMaxHeight, int height, int minSpeedInTimerLoop, double defaultDensity) {
 		super();
 		this.graphic = graphic;
 		this.width = width;
 		this.height = height;
+		this.frogMaxHeight = frogMaxHeight;
 		this.minSpeedInTimerLoops = minSpeedInTimerLoop;
 		this.defaultDensity = defaultDensity;
 	}

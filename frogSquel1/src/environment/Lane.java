@@ -62,6 +62,19 @@ public class Lane {
 		return true;
 	}
 
+	public void moveOneLaneToUp(){
+		this.ord++;
+		for (Car c : cars){
+			c.moveOneCarToUp();
+		}
+	}
+	public void moveOneLaneToDown(){
+		this.ord--;
+		for (Car c : cars){
+			c.moveOneCarToDown();
+		}
+	}
+
 
 //	 * Fourni : mayAddCar(), getFirstCase() et getBeforeFirstCase()
 
