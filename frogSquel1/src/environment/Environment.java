@@ -6,8 +6,8 @@ import util.Case;
 import gameCommons.Game;
 import gameCommons.IEnvironment;
 
-public class Environment implements IEnvironment {
-    protected ArrayList<Lane> voies;
+public abstract class Environment implements IEnvironment {
+    protected ArrayList<Lane> voies = new ArrayList<>();
     protected Game game;
 
 //    public Lane getVoie(int ord){
@@ -15,19 +15,31 @@ public class Environment implements IEnvironment {
 //    }
 
     public Environment(Game g){
-        voies = new ArrayList<>();
-
-        voies.add(new Lane(g, 0, 0));
-        for(int i = 1; i < g.height - 1; i++)
-            voies.add(new Lane(g, g.defaultDensity, i));
-        voies.add(new Lane(g, 0, g.height));
-
+//        voies = new ArrayList<>();
+//        for(int i = 1; i < this.game.height - 1; i++)
+//            voies.add(new Lane(this.game, this.game.defaultDensity, i));
+//        voies.add(new Lane(this.game, 0, this.game.height));
         this.game = g;
+
+        this.voies.add(new Lane(this.game, 0, 0));
+
+        this.assignVoies();
+
+
     }
 
-    public Environment() {
+    void assignVoies()
+    {
+        for(int i = 1; i < this.game.height - 1; i++)
+            voies.add(new Lane(this.game, this.game.defaultDensity, i));
+        voies.add(new Lane(this.game, 0, this.game.height));
     }
 
+    public void deleteFirstLane(int score){
+        if (this.voies.size() > this.game.height * 2 && score > 10) {
+            this.voies.remove(0);
+        }
+    }
     @Override
     public boolean isSafe(Case c){
         return voies.get(c.ord).isSafe(c);

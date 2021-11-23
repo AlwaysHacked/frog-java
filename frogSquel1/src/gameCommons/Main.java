@@ -18,7 +18,7 @@ public class Main {
 	public static void main(String[] args) {
 
 		//Caract�ristiques du jeu
-		int frogMaxHeight = 4;
+		//int frogMaxHeight = 4;
 		int width = 26;
 		int height = 20;
 		int tempo = 100;
@@ -28,10 +28,10 @@ public class Main {
 		//Cr�ation de l'interface graphique
 		IFroggerGraphics graphic = new FroggerGraphic(width, height);
 		//Cr�ation de la partie
-		Game game = new Game(graphic, width, frogMaxHeight, height, minSpeedInTimerLoops, defaultDensity);
+		Game game = new Game(graphic, width, height, minSpeedInTimerLoops, defaultDensity);
 		//Cr�ation et liason de la grenouille
-		EnvInf env = new EnvInf(game);
-		FrogInf frog = new FrogInf(game, env);
+		IEnvironment env = new EnvInf(game);
+		IFrog frog = new FrogInf(game, env);
 		game.setFrog(frog);
 		graphic.setFrog(frog);
 		//Cr�ation et liaison de l'environnement

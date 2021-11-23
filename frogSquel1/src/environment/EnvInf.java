@@ -1,22 +1,30 @@
 package environment;
 import gameCommons.Game;
+import gameCommons.IEnvironment;
 import util.Case;
 
 import java.util.ArrayList;
 
 // available methods : isSafe, update
-public class EnvInf extends Environment{
+public class EnvInf extends Environment implements IEnvironment {
     private int score = 0;
+//    private ArrayList<Lane> voies = new ArrayList<>();
 
-//    @Override
+    //    @Override
     public EnvInf(Game g) {
-        voies = new ArrayList<>();
+//        this.voies = new ArrayList();
+//        this.voies.add(new Lane(g, 0, 0));
+//        this.game = g;
+        super(g);
+        this.game = g;
 
-        for(int i = 0; i <= g.frogMaxHeight; i++)
-            voies.add(new Lane(g, 0, i));
 
-        for(int i = g.frogMaxHeight + 1; i < g.height; i++)
-            voies.add(new Lane(g, 0.001, i));
+    }
+
+    void assignVoies()
+    {
+        for(int i = 1; i < super.game.height - 1; i++)
+            this.voies.add(new Lane(super.game, super.game.defaultDensity, i));
     }
 
     public void moveLanes(Game g, boolean b){

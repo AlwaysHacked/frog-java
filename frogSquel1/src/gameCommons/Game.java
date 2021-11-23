@@ -4,6 +4,7 @@ import java.awt.*;
 import java.util.*;
 import environment.*;
 
+import frog.FrogInf;
 import graphicalElements.*;
 //import graphicalElements.IFroggerGraphics;
 
@@ -12,15 +13,15 @@ public class Game {
 	public final Random randomGen = new Random();
 
 	// Caracteristique de la partie
-	public final int frogMaxHeight;
+//	public final int frogMaxHeight;
 	public final int width;
 	public final int height;
 	public final int minSpeedInTimerLoops;
 	public final double defaultDensity;
 
 	// Lien aux objets utilis�s
-	private IEnvironment environment;
-	private IFrog frog;
+	private IEnvironment environment; // IEnvironment
+	private IFrog frog; // IFrog
 	private IFroggerGraphics graphic;
 
 	/**
@@ -36,12 +37,12 @@ public class Game {
 	 * @param defaultDensity
 	 *            densite de voiture utilisee par defaut pour les routes
 	 */
-	public Game(IFroggerGraphics graphic, int width, int frogMaxHeight, int height, int minSpeedInTimerLoop, double defaultDensity) {
+	public Game(IFroggerGraphics graphic, int width, int height, int minSpeedInTimerLoop, double defaultDensity) {
 		super();
 		this.graphic = graphic;
 		this.width = width;
 		this.height = height;
-		this.frogMaxHeight = frogMaxHeight;
+		//this.frogMaxHeight = frogMaxHeight;
 		this.minSpeedInTimerLoops = minSpeedInTimerLoop;
 		this.defaultDensity = defaultDensity;
 	}
@@ -80,9 +81,10 @@ public class Game {
 	 */
 	public boolean testLose() {
 		if(!environment.isSafe(frog.getPosition())){
-			graphic.endGameScreen("fucked");
+			graphic.endGameScreen(Integer.toString(frog.getScore())); // not compatible with finite version
 			return true;
 		}
+//		toString(frog.getScore());
 		return false;
 	}
 

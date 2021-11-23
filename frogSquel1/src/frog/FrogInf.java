@@ -1,50 +1,55 @@
 package frog;
 
 import environment.EnvInf;
-import gameCommons.Direction;
 import gameCommons.Game;
 import gameCommons.IEnvironment;
+import gameCommons.IFrog;
 import util.Case;
+import util.Direction;
 
-public class FrogInf extends Frog{
-    private final int maxHeight = 4;
-    private EnvInf environment;
+public class FrogInf extends Frog implements IFrog {
+    private final int maxHeight = 6;
+    private IEnvironment environment;
+    private int score = 0;
+    private int maxScore = 0;
 
-    public FrogInf(Game g, EnvInf env) {
+    public FrogInf(Game g, IEnvironment env) {
         super(g);
-        c = new Case(g.width/2, maxHeight);
         this.environment = env;
     }
 
-//    @Override
-    public void move(Direction d){
-        if(d == Direction.up){
-            System.out.println(c.ord);
-            if(c.ord >= maxHeight) {
-                c = new Case(c.absc, maxHeight);
-                environment.moveLanes(game, true);
+    public void move(Direction d) {
+        if (d == Direction.up) {
+            if (this.c.ord >= 6) {
+                this.c = new Case(this.c.absc, 6);
+                this.environment.moveLanes(this.game, true);
+                ++this.score;
+            } else {
+                this.c = new Case(this.c.absc, this.c.ord + 1);
+                ++this.score;
             }
-            else {
-                this.c = new Case(c.absc, c.ord + 1);
-                environment.moveLanes(game, false);
-            }
+//            if (this.environment.voies.size() > this.game.height * 2 && this.score > 10) {
+//                this.environment.voies.remove(0);
+//            }
+            this.environment.deleteFirstLane(maxScore);
+        } else if (d == Direction.down && this.c.ord > 0) {
+            this.score--;
+            this.c = new Case(this.c.absc, this.c.ord - 1);
+        } else if (d == Direction.left && this.c.absc - 1 >= 0) {
+            this.c = new Case(this.c.absc - 1, this.c.ord);
+        } else if (d == Direction.right && this.c.absc < this.game.width - 1) {
+            this.c = new Case(this.c.absc + 1, this.c.ord);
         }
-        else if(d == Direction.down && c.ord - 1 >= 0){
-            c = new Case(c.absc, c.ord -1);
-            if (c.ord == 0){
-                c = new Case(c.absc, 0);
-                environment.moveLanes(game, false);
-            }
-//            else
 
-        }
-        else if(d == Direction.left && c.absc - 1 >= 0){
-            c = new Case(c.absc - 1, c.ord);
-        }
-        else if(d == Direction.right && c.absc < game.width - 1){
-            c = new Case(c.absc + 1, c.ord);
-        }
+        if(this.score == this.maxScore + 1)
+            maxScore++;
+    }
+
+    public int getScore() {
+        return maxScore;
+    }
+
+    public int returnScore() {
+        return this.score;
     }
 }
-
-

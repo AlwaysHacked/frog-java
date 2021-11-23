@@ -5,7 +5,7 @@ import gameCommons.IFrog;
 import util.Case;
 import util.Direction;
 
-public class Frog implements IFrog {
+public abstract class Frog implements IFrog {
 
 	protected Game game;
 	protected Case c;
