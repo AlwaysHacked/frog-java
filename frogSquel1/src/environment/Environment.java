@@ -35,11 +35,6 @@ public abstract class Environment implements IEnvironment {
         voies.add(new Lane(this.game, 0, this.game.height));
     }
 
-    public void deleteFirstLane(int score){
-        if (this.voies.size() > this.game.height * 2 && score > 10) {
-            this.voies.remove(0);
-        }
-    }
     @Override
     public boolean isSafe(Case c){
         return voies.get(c.ord).isSafe(c);

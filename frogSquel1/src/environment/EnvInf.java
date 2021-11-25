@@ -44,6 +44,12 @@ public class EnvInf extends Environment implements IEnvironment {
             voies.remove(0);
     }
 
+    public void deleteFirstLane(int score){
+        if (this.voies.size() > this.game.height * 2 && score > 10) {
+            this.voies.remove(0);
+        }
+    }
+
     public int getScore() {
         return score;
     }
