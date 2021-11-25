@@ -22,16 +22,12 @@ public class FrogInf extends Frog implements IFrog {
         if (d == Direction.up) {
             if (this.c.ord >= 6) {
                 this.c = new Case(this.c.absc, 6);
-                this.environment.moveLanes(this.game, true);
+                this.environment.moveLanes(this.game);
                 ++this.score;
             } else {
                 this.c = new Case(this.c.absc, this.c.ord + 1);
                 ++this.score;
             }
-//            if (this.environment.voies.size() > this.game.height * 2 && this.score > 10) {
-//                this.environment.voies.remove(0);
-//            }
-            this.environment.deleteFirstLane(maxScore);
         } else if (d == Direction.down && this.c.ord > 0) {
             this.score--;
             this.c = new Case(this.c.absc, this.c.ord - 1);

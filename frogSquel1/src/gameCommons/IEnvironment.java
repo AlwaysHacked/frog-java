@@ -28,9 +28,5 @@ public interface IEnvironment {
 	 */
 	public void update();
 
-	public void moveLanes(Game g, boolean b);
-
-	public void deleteFirstLane(int score);
-//	public Lane getVoie(int ord);
-
-	}
+	public void moveLanes(Game g);
+}
