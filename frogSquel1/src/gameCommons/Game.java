@@ -19,6 +19,9 @@ public class Game {
 	public final int minSpeedInTimerLoops;
 	public final double defaultDensity;
 
+	private int score = 0;
+
+
 	// Lien aux objets utilis�s
 	private IEnvironment environment; // IEnvironment
 	private IFrog frog; // IFrog
@@ -115,4 +118,15 @@ public class Game {
 		}
 	}
 
+	public int getScore() {
+		return score;
+	}
+
+	public void incrementeScore(){
+		this.score++;
+	}
+
+	public void decrementeScore(){
+		this.score--;
+	}
 }

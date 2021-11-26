@@ -10,7 +10,6 @@ import util.Direction;
 public class FrogInf extends Frog implements IFrog {
     private final int maxHeight = 6;
     private IEnvironment environment;
-    private int score = 0;
     private int maxScore = 0;
 
     public FrogInf(Game g, IEnvironment env) {
@@ -20,16 +19,16 @@ public class FrogInf extends Frog implements IFrog {
 
     public void move(Direction d) {
         if (d == Direction.up) {
-            if (this.c.ord >= 6) {
-                this.c = new Case(this.c.absc, 6);
+            if (this.c.ord >= maxHeight) {
+                this.c = new Case(this.c.absc, maxHeight);
                 this.environment.moveLanes(this.game);
-                ++this.score;
+                this.game.incrementeScore();
             } else {
                 this.c = new Case(this.c.absc, this.c.ord + 1);
-                ++this.score;
+                this.game.incrementeScore();
             }
         } else if (d == Direction.down && this.c.ord > 0) {
-            this.score--;
+            this.game.decrementeScore();
             this.c = new Case(this.c.absc, this.c.ord - 1);
         } else if (d == Direction.left && this.c.absc - 1 >= 0) {
             this.c = new Case(this.c.absc - 1, this.c.ord);
@@ -37,15 +36,11 @@ public class FrogInf extends Frog implements IFrog {
             this.c = new Case(this.c.absc + 1, this.c.ord);
         }
 
-        if(this.score == this.maxScore + 1)
+        if(this.game.getScore() == this.maxScore + 1)
             maxScore++;
     }
 
     public int getScore() {
         return maxScore;
-    }
-
-    public int returnScore() {
-        return this.score;
     }
 }
