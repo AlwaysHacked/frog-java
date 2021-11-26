@@ -34,11 +34,6 @@ public class Car {
 		this.addToGraphics();
 	}
 
-	//if ( a > b)
-//		return a;
-//	else return b;
-//	a>b ? a : b;
-
 	public Case getPosition(){
 		return this.leftPosition;
 	}

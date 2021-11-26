@@ -18,7 +18,6 @@ public class Main {
 	public static void main(String[] args) {
 
 		//Caract�ristiques du jeu
-		//int frogMaxHeight = 4;
 		int width = 26;
 		int height = 20;
 		int tempo = 100;
@@ -29,14 +28,24 @@ public class Main {
 		IFroggerGraphics graphic = new FroggerGraphic(width, height);
 		//Cr�ation de la partie
 		Game game = new Game(graphic, width, height, minSpeedInTimerLoops, defaultDensity);
-		//Cr�ation et liason de la grenouille
-		IEnvironment env = new EnvInf(game);
-		IFrog frog = new FrogInf(game, env);
+
+		boolean jeuInfini = false;
+
+		IEnvironment env;
+		IFrog frog;
+
+//		if(jeuInfini) {
+			env = new EnvInf(game);
+			frog = new FrogInf(game, env);
+//		}
+//		else{
+//			env = new Environment(game) {};
+//			frog = new Frog(game, env);
+//		}
 		game.setFrog(frog);
 		graphic.setFrog(frog);
 		//Cr�ation et liaison de l'environnement
 		game.setEnvironment(env);
-				
 		//Boucle principale : l'environnement s'acturalise tous les tempo milisecondes
 		Timer timer = new Timer(tempo, new ActionListener() {
 			@Override
@@ -45,6 +54,7 @@ public class Main {
 				graphic.repaint();
 			}
 		});
+		long start = System.currentTimeMillis();
 		timer.setInitialDelay(0);
 		timer.start();
 	}

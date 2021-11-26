@@ -84,7 +84,8 @@ public class Game {
 	 */
 	public boolean testLose() {
 		if(!environment.isSafe(frog.getPosition())){
-			graphic.endGameScreen(Integer.toString(frog.getScore())); // not compatible with finite version
+			long time = (System.currentTimeMillis() - environment.getTime()) / 1000;
+			graphic.endGameScreen(Integer.toString(frog.getScore()) + " points in " + String.valueOf(time) + " seconds");
 			return true;
 		}
 //		toString(frog.getScore());

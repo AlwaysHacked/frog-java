@@ -8,17 +8,10 @@ import java.util.ArrayList;
 // available methods : isSafe, update
 public class EnvInf extends Environment implements IEnvironment {
     private int score = 0;
-//    private ArrayList<Lane> voies = new ArrayList<>();
 
-    //    @Override
     public EnvInf(Game g) {
-//        this.voies = new ArrayList();
-//        this.voies.add(new Lane(g, 0, 0));
-//        this.game = g;
         super(g);
         this.game = g;
-
-
     }
 
     void assignVoies()
