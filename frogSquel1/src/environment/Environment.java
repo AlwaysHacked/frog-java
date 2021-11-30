@@ -7,7 +7,7 @@ import gameCommons.Game;
 import gameCommons.IEnvironment;
 
 public abstract class Environment implements IEnvironment {
-    protected ArrayList<Lane> voies = new ArrayList<>();
+    public ArrayList<Lane> voies = new ArrayList<>();
     protected Game game;
     protected long time = System.currentTimeMillis();
 

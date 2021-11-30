@@ -7,8 +7,9 @@ import javax.swing.Timer;
 
 import frog.Frog;
 //import givenEnvironment.GivenEnvironment;
-import frog.FrogInf;
-import environment.EnvInf;
+//import frog.FrogInf;
+import frog.*;
+import environment.*;
 import graphicalElements.FroggerGraphic;
 import graphicalElements.IFroggerGraphics;
 
@@ -34,14 +35,14 @@ public class Main {
 		IEnvironment env;
 		IFrog frog;
 
-//		if(jeuInfini) {
+		if(jeuInfini) {
 			env = new EnvInf(game);
 			frog = new FrogInf(game, env);
-//		}
-//		else{
-//			env = new Environment(game) {};
-//			frog = new Frog(game, env);
-//		}
+		}
+		else{
+			env = new FinEnv(game);
+			frog = new FinFrog(game);
+		}
 		game.setFrog(frog);
 		graphic.setFrog(frog);
 		//Cr�ation et liaison de l'environnement
