@@ -6,9 +6,12 @@ import gameCommons.IEnvironment;
 import util.Case;
 import java.util.Random;
 
+import CaseSpec.*;
 import java.util.ArrayList;
 
 public class Lane {
+	private Random rand = new Random();
+
 	private Game game;
 	private int ord;
 	private int speed;
@@ -17,10 +20,23 @@ public class Lane {
 	private double density;
 	private int moveTime = 0;
 
-	private Random rand = new Random();
+	private Piege p = null;
+	private Tunnel t = null;
+
+
 
 	public Lane(Game g, double density, int ordonnee){
 		this.ord = ordonnee;
+
+		int r = rand.nextInt(9);
+		if(r == 0)
+			p = new Piege (new Case(
+					rand.nextInt(this.game.width), this.ord)
+			);
+		else if(r == 1)
+			t = new Tunnelx(new Case(
+					rand.nextInt(this.game.width), this.ord)
+			);
 
 		this.game = g;
 		this.speed = rand.nextInt(3) + 2;
@@ -54,11 +70,11 @@ public class Lane {
 		}
 	}
 
-
 	public boolean isSafe(Case c){;
 		for(Car car : cars)
 			if(car.isOnPosition(c))
 				return false;
+
 		return true;
 	}
 

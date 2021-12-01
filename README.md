@@ -4,7 +4,7 @@ Ce projet a été realisé dans le cadre du cours **Introduction à la Programma
 
 ## Jeu attendu
 
-Un jeu fonctionnel tel que donnée en exemple.
+Un jeu fonctionnel tel que donné en exemple.
 But atteint !
 
 ## Partie 1
