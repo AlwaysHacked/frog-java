@@ -22,26 +22,24 @@ public class Lane {
 
 	private Piege p = null;
 	private Tunnel t = null;
-
+	int r = rand.nextInt(9);
 
 
 	public Lane(Game g, double density, int ordonnee){
 		this.ord = ordonnee;
-
-		int r = rand.nextInt(9);
-		if(r == 0)
-			p = new Piege (new Case(
-					rand.nextInt(this.game.width), this.ord)
-			);
-		else if(r == 1)
-			t = new Tunnelx(new Case(
-					rand.nextInt(this.game.width), this.ord)
-			);
-
 		this.game = g;
 		this.speed = rand.nextInt(3) + 2;
 		this.leftToRight = rand.nextBoolean();
 		this.density = density;
+
+		if(r == 0 && this.ord!=0) {
+			p = new Piege(new Case(rand.nextInt(this.game.width), this.ord), this.game);
+			p.addGraphics();
+		}
+		else if(r == 1 && this.ord!=0) {
+			t = new Tunnel(new Case(rand.nextInt(this.game.width), this.ord), this.game);
+			t.addGraphics();
+		}
 	}
 
 	public ArrayList<Car> getCars(){
@@ -60,6 +58,12 @@ public class Lane {
 			this.moveAllCars(true);
 		}
 		else this.moveAllCars(false);
+		if(r == 0) {
+			p.addGraphics();
+		}
+		else if(r == 1) {
+			t.addGraphics();
+		}
 		removeCar();
 		mayAddCar();
 	}
@@ -70,11 +74,21 @@ public class Lane {
 		}
 	}
 
-	public boolean isSafe(Case c){;
-		for(Car car : cars)
-			if(car.isOnPosition(c))
+	public boolean isSafe(Case c) {
+		;
+		for (Car car : cars){
+			if (car.isOnPosition(c)){
+				if(t!=null) {
+					if (c.absc==t.getPos().absc) {
+						return true;
+					}
+				}
 				return false;
-
+			}
+		}
+		if(p!=null) {
+			if (c.absc==p.getPos().absc) return false;
+		}
 		return true;
 	}
 
@@ -83,12 +97,21 @@ public class Lane {
 		for (Car c : cars){
 			c.moveOneCarToUp();
 		}
+		if(r == 0 && p!=null)
+			p = new Piege (new Case(p.getPos().absc, this.ord), this.game);
+		else if(r == 1 && t!=null)
+			t = new Tunnel(new Case(t.getPos().absc, this.ord), this.game);
+
 	}
 	public void moveOneLaneToDown(){
 		this.ord--;
 		for (Car c : cars){
 			c.moveOneCarToDown();
 		}
+		if(r == 0 && p!=null)
+			p = new Piege (new Case(p.getPos().absc, this.ord), this.game);
+		else if(r == 1 && t!=null)
+			t = new Tunnel(new Case(t.getPos().absc, this.ord), this.game);
 	}
 
 

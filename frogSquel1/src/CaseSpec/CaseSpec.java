@@ -1,14 +1,19 @@
 package CaseSpec;
 
 import util.Case;
+import gameCommons.Game;
 
 public abstract class CaseSpec {
+    protected Game game;
     protected Case pos;
-    private int exist;
 
-    public CaseSpec(Case c, int exist){
-        this.exist = exist;
+    public CaseSpec(Case c, Game g){
         this.pos = c;
+        this.game=g;
+    }
+
+    public Case getPos(){
+        return this.pos;
     }
 
 
