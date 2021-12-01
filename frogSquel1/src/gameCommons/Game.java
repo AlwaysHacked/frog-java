@@ -82,9 +82,8 @@ public class Game {
 	 * 
 	 * @return true si le partie est perdue
 	 */
-	public boolean testLose() {
+	public boolean testLose(long time) {
 		if(!environment.isSafe(frog.getPosition())){
-			long time = (System.currentTimeMillis() - environment.getTime()) / 1000;
 			graphic.endGameScreen(Integer.toString(frog.getScore()) + " points in " + String.valueOf(time) + " seconds");
 			return true;
 		}
@@ -98,9 +97,9 @@ public class Game {
 	 * 
 	 * @return true si la partie est gagn�e
 	 */
-	public boolean testWin() {
+	public boolean testWin(long time) {
 		if(environment.isWinningPosition(frog.getPosition())){
-			graphic.endGameScreen("not fucked, BRAVO!");
+			graphic.endGameScreen("Level completed in " + String.valueOf(time) + " seconds");
 			return true;
 		}
 		return false;
@@ -110,13 +109,18 @@ public class Game {
 	 * Actualise l'environnement, affiche la grenouille et verifie la fin de
 	 * partie.
 	 */
+	boolean playing = true; //  not print every second
+
 	public void update() {
+		long time = (System.currentTimeMillis() - environment.getTime()) / 1000;
+
+		if(playing)
+			if (testLose(time) || testWin(time))
+				playing = false;
+
 		graphic.clear();
 		environment.update();
 		this.graphic.add(new Element(frog.getPosition(), Color.GREEN));
-		if (testLose() || testWin()){
-			//			System.exit(0);
-		}
 	}
 
 	public int getScore() {

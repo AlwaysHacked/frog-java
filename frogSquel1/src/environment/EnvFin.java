@@ -6,8 +6,11 @@ import util.Case;
 import gameCommons.Game;
 import gameCommons.IEnvironment;
 
-public class FinEnv extends Environment implements IEnvironment {
-    public FinEnv(Game g) {
+public class EnvFin extends Environment implements IEnvironment {
+    public EnvFin(Game g) {
         super(g);
     }
+
+    @Override
+    public void moveLanes(Game g) { }
 }

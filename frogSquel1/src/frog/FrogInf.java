@@ -1,6 +1,5 @@
 package frog;
 
-import environment.*;
 import environment.Lane;
 import gameCommons.Game;
 import gameCommons.IEnvironment;
@@ -11,7 +10,7 @@ import util.Direction;
 public class FrogInf extends Frog implements IFrog {
     private final int maxHeight = 6;
     private IEnvironment environment;
-    private int maxScore = 0;
+
 
     public FrogInf(Game g, IEnvironment env) {
         super(g);
@@ -22,7 +21,7 @@ public class FrogInf extends Frog implements IFrog {
         if (d == Direction.up) {
             if (this.c.ord >= maxHeight) {
                 this.c = new Case(this.c.absc, maxHeight);
-                this./*environment.*/moveLanes(this.game);
+                this.environment.moveLanes(this.game);
                 this.game.incrementeScore();
             } else {
                 this.c = new Case(this.c.absc, this.c.ord + 1);
@@ -41,16 +40,16 @@ public class FrogInf extends Frog implements IFrog {
             maxScore++;
     }
 
-    public void moveLanes(Game g){
-        this.environment.voies.add(new Lane(g, g.defaultDensity, this.environment.voies.size()));
-        for (Lane l : this.environment.voies){
-            l.moveOneLaneToDown();
-        }
-
-        if(this.environment.voies.size() >= g.height + (int) (g.height / 3))
-            this.environment.voies.remove(0);
-        this.environment.voies.remove(0);
-    }
+//    public void moveLanes(Game g){
+//        this.environment.voies.add(new Lane(g, g.defaultDensity, this.environment.voies.size()));
+//        for (Lane l : this.environment.voies){
+//            l.moveOneLaneToDown();
+//        }
+//
+//        if(this.environment.voies.size() >= g.height + (int) (g.height / 3))
+//            this.environment.voies.remove(0);
+//        this.environment.voies.remove(0);
+//    }
 
     public int getScore() {
         return maxScore;

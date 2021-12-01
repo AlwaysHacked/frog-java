@@ -40,8 +40,8 @@ public class Main {
 			frog = new FrogInf(game, env);
 		}
 		else{
-			env = new FinEnv(game);
-			frog = new FinFrog(game);
+			env = new EnvFin(game);
+			frog = new FrogFin(game);
 		}
 		game.setFrog(frog);
 		graphic.setFrog(frog);

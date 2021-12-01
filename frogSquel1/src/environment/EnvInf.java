@@ -20,22 +20,22 @@ public class EnvInf extends Environment implements IEnvironment {
             this.voies.add(new Lane(super.game, super.game.defaultDensity, i));
     }
 
-//    public void moveLanes(Game g){
-//        voies.add(new Lane(g, g.defaultDensity, voies.size()));
-//        for (Lane l : voies){
-//            l.moveOneLaneToDown();
-//        }
-//
-//        if(voies.size() >= g.height + (int) (g.height / 3))
-//            voies.remove(0);
-//        this.voies.remove(0);
-//    }
+    public void moveLanes(Game g){
+        voies.add(new Lane(g, g.defaultDensity, voies.size()));
+        for (Lane l : voies){
+            l.moveOneLaneToDown();
+        }
 
-//    public void deleteFirstLane(int score){
-//        if (this.voies.size() > this.game.height * 2 && score > 10) {
-//            this.voies.remove(0);
-//        }
-//    }
+        if(voies.size() >= g.height + (int) (g.height / 3))
+            voies.remove(0);
+        this.voies.remove(0);
+    }
+
+    public void deleteFirstLane(int score){
+        if (this.voies.size() > this.game.height * 2 && score > 10) {
+            this.voies.remove(0);
+        }
+    }
 
     public int getScore() {
         return score;

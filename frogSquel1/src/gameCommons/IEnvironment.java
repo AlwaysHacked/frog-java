@@ -28,5 +28,7 @@ public interface IEnvironment {
 	 */
 	public void update();
 
+	public void moveLanes(Game g);
+
 	long getTime();
 }

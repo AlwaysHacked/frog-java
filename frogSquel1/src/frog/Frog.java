@@ -6,10 +6,10 @@ import util.Case;
 import util.Direction;
 
 public abstract class Frog implements IFrog {
-
 	protected Game game;
 	protected Case c;
 	protected Direction d;
+	protected int maxScore = 0;
 
 	public Frog(Game g){
 		this.game = g;
