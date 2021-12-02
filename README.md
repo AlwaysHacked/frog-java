@@ -1,11 +1,15 @@
 # Jeu Frogger
 
-Ce projet a été realisé dans le cadre du cours **Introduction à la Programmation Objet** par Ala-Eddine Lamri et Seryozha Hakobyan.
+Ce projet a été realisé dans le cadre du cours **Introduction à la Programmation Objet** par Ala-Eddine Lamri et Seryozha Hakobyan du groupe 3.
 
 ## Jeu attendu
 
 Un jeu fonctionnel tel que donné en exemple.
 But atteint !
+
+## Résultat final
+
+Le jeu final comporte également des  *`Cases Spéciales`* `Sky` et `Piege` représentées en *rose* et en *rouge* respectivement.
 
 ## Partie 1
 
