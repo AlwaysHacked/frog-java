@@ -30,7 +30,7 @@ public class Main {
 		//Cr�ation de la partie
 		Game game = new Game(graphic, width, height, minSpeedInTimerLoops, defaultDensity);
 
-		boolean jeuInfini = false;
+		boolean jeuInfini = true;
 
 		IEnvironment env;
 		IFrog frog;

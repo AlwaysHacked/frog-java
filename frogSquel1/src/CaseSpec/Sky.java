@@ -6,9 +6,9 @@ import gameCommons.Game;
 
 import java.awt.*;
 
-public class Tunnel extends CaseSpec{
+public class Sky extends CaseSpec{
     private final Color colorP=Color.MAGENTA;
-    public Tunnel(Case c, Game g) {
+    public Sky(Case c, Game g) {
         super(c, g);
     }
 

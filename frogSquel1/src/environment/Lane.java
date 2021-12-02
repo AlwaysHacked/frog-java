@@ -20,10 +20,13 @@ public class Lane {
 	private double density;
 	private int moveTime = 0;
 
-	private Piege p = null;
-	private Tunnel t = null;
-	int r = rand.nextInt(9);
+	private final int densiteCaseSpecial = 100;
+	private final int densitePiege = 7;
+	private final int densiteCiel = 3;
 
+	private Piege p = null;
+	private Sky s = null;
+	int r = rand.nextInt(densiteCaseSpecial);
 
 	public Lane(Game g, double density, int ordonnee){
 		this.ord = ordonnee;
@@ -32,14 +35,16 @@ public class Lane {
 		this.leftToRight = rand.nextBoolean();
 		this.density = density;
 
-		if(r == 0 && this.ord!=0) {
+		if(r <= densitePiege && this.density != 0) {
 			p = new Piege(new Case(rand.nextInt(this.game.width), this.ord), this.game);
 			p.addGraphics();
 		}
-		else if(r == 1 && this.ord!=0) {
-			t = new Tunnel(new Case(rand.nextInt(this.game.width), this.ord), this.game);
-			t.addGraphics();
+		else if(r <= densitePiege + densiteCiel && this.density != 0) {
+			s = new Sky(new Case(rand.nextInt(this.game.width), this.ord), this.game);
+			s.addGraphics();
 		}
+		else if(this.density == 0)
+			r = densiteCiel + densitePiege + 1;
 	}
 
 	public ArrayList<Car> getCars(){
@@ -58,12 +63,12 @@ public class Lane {
 			this.moveAllCars(true);
 		}
 		else this.moveAllCars(false);
-		if(r == 0) {
-			p.addGraphics();
-		}
-		else if(r == 1) {
-			t.addGraphics();
-		}
+		if(p != null)
+			p.addGraphics(); // parfois null -> erreur
+
+		else if(s != null)
+			s.addGraphics(); // parfois null -> erreur
+
 		removeCar();
 		mayAddCar();
 	}
@@ -74,21 +79,20 @@ public class Lane {
 		}
 	}
 
+
+
 	public boolean isSafe(Case c) {
-		;
-		for (Car car : cars){
-			if (car.isOnPosition(c)){
-				if(t!=null) {
-					if (c.absc==t.getPos().absc) {
-						return true;
-					}
-				}
+		if(s != null && s.isOnAbsc(c)) // sky is safe
+			return true;
+
+		for (Car car : cars){ // car on a position not safe
+			if (car.isOnPosition(c))
 				return false;
-			}
 		}
-		if(p!=null) {
-			if (c.absc==p.getPos().absc) return false;
-		}
+
+		if(p != null && p.isOnAbsc(c)) // piege not safe
+			return false;
+
 		return true;
 	}
 
@@ -97,21 +101,32 @@ public class Lane {
 		for (Car c : cars){
 			c.moveOneCarToUp();
 		}
-		if(r == 0 && p!=null)
-			p = new Piege (new Case(p.getPos().absc, this.ord), this.game);
-		else if(r == 1 && t!=null)
-			t = new Tunnel(new Case(t.getPos().absc, this.ord), this.game);
 
+		if(p != null)
+			p = new Piege (new Case(
+					p.getPos().absc, this.ord), this.game
+			);
+
+		else if(s != null)
+			s = new Sky(new Case(
+					s.getPos().absc, this.ord), this.game
+			);
 	}
+
 	public void moveOneLaneToDown(){
 		this.ord--;
 		for (Car c : cars){
 			c.moveOneCarToDown();
 		}
-		if(r == 0 && p!=null)
-			p = new Piege (new Case(p.getPos().absc, this.ord), this.game);
-		else if(r == 1 && t!=null)
-			t = new Tunnel(new Case(t.getPos().absc, this.ord), this.game);
+		if(p != null)
+			p = new Piege (new Case(
+					p.getPos().absc, this.ord), this.game
+			);
+
+		else if(s != null)
+			s = new Sky(new Case(
+					s.getPos().absc, this.ord), this.game
+			);
 	}
 
 

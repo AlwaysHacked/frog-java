@@ -9,12 +9,12 @@ public abstract class CaseSpec {
 
     public CaseSpec(Case c, Game g){
         this.pos = c;
-        this.game=g;
+        this.game = g;
     }
 
     public Case getPos(){
         return this.pos;
     }
 
-
+    public boolean isOnAbsc(Case c){ return this.pos.absc == c.absc; }
 }
